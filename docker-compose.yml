@@ -1,0 +1,9 @@
+services:
+  rjx-portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rjx-portfolio
+    ports:
+      - '8080:80'
+    restart: unless-stopped
