@@ -1,4 +1,5 @@
 import type { Dictionary } from './en';
+import { PROJECT_URLS } from '@/lib/config';
 
 export const ru: Dictionary = {
   nav: {
@@ -78,7 +79,7 @@ export const ru: Dictionary = {
           'Лендинг разработчика в тёплой вечерней эстетике — янтарное свечение CRT, пятна от кофе и командная палитра на Framer Motion.',
         tags: ['React 19', 'TypeScript', 'Motion'],
         image: '/images/project-amber-terminal.svg',
-        url: 'http://localhost:5174',
+        url: PROJECT_URLS.amber,
         proofType: 'screenshot' as const,
       },
       {
@@ -90,7 +91,7 @@ export const ru: Dictionary = {
           'Люксовый чёрно-золотой лендинг независимой часовой мануфактуры — лимитированные серии по 200 экземпляров.',
         tags: ['React 19', 'Дизайн-система', 'Lenis'],
         image: '/images/project-aurum-noir.svg',
-        url: 'http://localhost:5175',
+        url: PROJECT_URLS.aurum,
         proofType: 'screenshot' as const,
       },
       {
@@ -102,7 +103,7 @@ export const ru: Dictionary = {
           'Финансовая ОС для фрилансеров — инвойсы, налоги, расходы и прогноз cash flow в одной живой таблице.',
         tags: ['React 19', 'shadcn/ui', 'GSAP'],
         image: '/images/project-meridian.svg',
-        url: 'http://localhost:5176',
+        url: PROJECT_URLS.meridian,
         proofType: 'screenshot' as const,
       },
       {
@@ -114,7 +115,7 @@ export const ru: Dictionary = {
           'Развёрнутый Telegram-бот для почтовых сценариев прямо в чате — запущен и работает в продакшене.',
         tags: ['Telegram API', 'Node.js', 'Задеплоен'],
         image: '/images/project-uimailbot.svg',
-        url: 'https://t.me/uimailbot',
+        url: PROJECT_URLS.uimailbot,
         proofType: 'architecture' as const,
       },
     ],

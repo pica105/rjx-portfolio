@@ -9,3 +9,8 @@ yarn-error.log*
 pnpm-debug.log*
 .vite
 *.tsbuildinfo
+
+# Local env — commit only .env.example
+.env
+.env.*
+!.env.example

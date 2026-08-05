@@ -1,3 +1,5 @@
+import { PROJECT_URLS } from '@/lib/config';
+
 export const en = {
   nav: {
     capabilities: 'Capabilities',
@@ -76,7 +78,7 @@ export const en = {
           'A developer landing page with a warm evening aesthetic — amber CRT glow, coffee stains, and a command-palette powered by Framer Motion.',
         tags: ['React 19', 'TypeScript', 'Motion'],
         image: '/images/project-amber-terminal.svg',
-        url: 'http://localhost:5174',
+        url: PROJECT_URLS.amber,
         proofType: 'screenshot' as const,
       },
       {
@@ -88,7 +90,7 @@ export const en = {
           'A black-and-gold luxury landing for an independent watch house — limited editions of 200, scroll-choreographed storytelling.',
         tags: ['React 19', 'Design System', 'Lenis'],
         image: '/images/project-aurum-noir.svg',
-        url: 'http://localhost:5175',
+        url: PROJECT_URLS.aurum,
         proofType: 'screenshot' as const,
       },
       {
@@ -100,7 +102,7 @@ export const en = {
           'A financial OS for freelancers — invoices, taxes, expenses and cash-flow forecasts in one living spreadsheet.',
         tags: ['React 19', 'shadcn/ui', 'GSAP'],
         image: '/images/project-meridian.svg',
-        url: 'http://localhost:5176',
+        url: PROJECT_URLS.meridian,
         proofType: 'screenshot' as const,
       },
       {
@@ -112,7 +114,7 @@ export const en = {
           'A hosted Telegram bot handling mail-style workflows in chat — deployed, live, and running in production.',
         tags: ['Telegram API', 'Node.js', 'Deployed'],
         image: '/images/project-uimailbot.svg',
-        url: 'https://t.me/uimailbot',
+        url: PROJECT_URLS.uimailbot,
         proofType: 'architecture' as const,
       },
     ],

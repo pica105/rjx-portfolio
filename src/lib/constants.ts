@@ -1,1 +1,1 @@
-export const TELEGRAM_URL = 'https://t.me/pica105';
+export { TELEGRAM_URL } from '@/lib/config';
