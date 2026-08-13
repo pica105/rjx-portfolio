@@ -1,16 +1,13 @@
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Moon, Sun, Github } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Moon, Sun, Github } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
 import { useDictionary } from '@/hooks/useDictionary';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
-import { scrollTo } from '@/lib/utils';
-import { stopScroll, startScroll } from '@/lib/lenis';
+import { scrollTo, cn } from '@/lib/utils';
 import { TELEGRAM_URL, GITHUB_PROFILE_URL } from '@/lib/constants';
 import { PillButton } from '@/components/shared/PillButton';
 import { SocialButton } from '@/components/shared/SocialButton';
 import { LanguageToggle } from '@/components/shared/LanguageToggle';
-import { cn } from '@/lib/utils';
 
 const NAV_SECTIONS = ['home', 'capabilities', 'works'];
 
@@ -18,35 +15,13 @@ export function Header() {
   const t = useDictionary();
   const theme = useAppStore((s) => s.theme);
   const toggleTheme = useAppStore((s) => s.toggleTheme);
-  const [menuOpen, setMenuOpen] = useState(false);
   const activeSection = useScrollSpy(NAV_SECTIONS);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMenuOpen(false);
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    if (menuOpen) stopScroll();
-    else startScroll();
-    return () => {
-      document.body.style.overflow = '';
-      startScroll();
-    };
-  }, [menuOpen]);
 
   const navLink = (id: string, label: string) => (
     <button
       key={id}
       type="button"
-      onClick={() => {
-        setMenuOpen(false);
-        scrollTo(id);
-      }}
+      onClick={() => scrollTo(id)}
       className={cn(
         'relative text-sm font-medium transition-colors duration-200',
         activeSection === id
@@ -85,8 +60,11 @@ export function Header() {
           <span className="animate-blink text-xl font-bold text-[var(--accent-cyan)]">▮</span>
         </button>
 
-        {/* Desktop nav */}
-        <nav className="col-start-2 hidden items-center gap-8 justify-self-center lg:flex" aria-label="Primary">
+        {/* Nav (tablet + desktop) */}
+        <nav
+          className="col-start-2 hidden items-center gap-8 justify-self-center md:flex"
+          aria-label="Primary"
+        >
           {NAV_SECTIONS.filter((s) => s !== 'home').map((id) =>
             navLink(id, t.nav[id as keyof typeof t.nav])
           )}
@@ -116,76 +94,8 @@ export function Header() {
           <SocialButton href={GITHUB_PROFILE_URL} label="GitHub" className="h-8 w-8">
             <Github size={16} />
           </SocialButton>
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen(true)}
-            aria-label={t.a11y.openMenu}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-raised)] text-[var(--text-secondary)] transition-colors hover:bg-[var(--border-strong)] lg:hidden"
-          >
-            <Menu size={16} />
-          </button>
         </div>
       </div>
-
-      {/* Mobile overlay menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex flex-col bg-[var(--background)]/90 backdrop-blur-xl lg:hidden"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile menu"
-          >
-            <div className="flex h-16 items-center justify-between px-5">
-              <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
-                rjx
-              </span>
-              <button
-                type="button"
-                onClick={() => setMenuOpen(false)}
-                aria-label={t.a11y.closeMenu}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-raised)] text-[var(--text-secondary)]"
-              >
-                <X size={16} />
-              </button>
-            </div>
-            <nav className="flex flex-1 flex-col items-center justify-center gap-8" aria-label="Mobile">
-              {NAV_SECTIONS.map((id) => (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => {
-                    setMenuOpen(false);
-                    scrollTo(id);
-                  }}
-                  className={cn(
-                    'text-2xl font-semibold transition-colors',
-                    activeSection === id
-                      ? 'text-[var(--accent-cyan)]'
-                      : 'text-[var(--text-primary)] hover:text-[var(--accent-cyan)]'
-                  )}
-                >
-                  {id === 'home' ? 'Home' : t.nav[id as keyof typeof t.nav]}
-                </button>
-              ))}
-              <div className="mt-4">
-                <PillButton
-                  variant="primary"
-                  size="lg"
-                  href={TELEGRAM_URL}
-                >
-                  {t.nav.contact}
-                </PillButton>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.header>
   );
 }

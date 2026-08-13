@@ -169,8 +169,6 @@ export const ru: Dictionary = {
   },
   a11y: {
     skipToContent: 'К содержанию',
-    openMenu: 'Открыть меню',
-    closeMenu: 'Закрыть меню',
     toggleTheme: 'Переключить тему',
   },
 };

@@ -168,8 +168,6 @@ export const en = {
   },
   a11y: {
     skipToContent: 'Skip to content',
-    openMenu: 'Open menu',
-    closeMenu: 'Close menu',
     toggleTheme: 'Toggle theme',
   },
 };

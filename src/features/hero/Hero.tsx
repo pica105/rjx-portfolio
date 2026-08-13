@@ -49,7 +49,7 @@ export function Hero() {
           </Eyebrow>
         </motion.div>
 
-        <h1 className="text-4xl font-bold leading-[0.95] tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-6xl lg:text-7xl">
           {words.map((word, i) => (
             <motion.span
               key={i}

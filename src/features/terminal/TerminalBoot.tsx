@@ -118,7 +118,7 @@ export function TerminalBoot() {
           className="h-[2px] w-full"
           style={{
             background: 'linear-gradient(90deg, #ffffff, #8b8b93)',
-            boxShadow: '0 0 20px rgba(255,255,255,0.5)',
+            boxShadow: '0 0 12px rgba(255,255,255,0.25)',
           }}
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
