@@ -17,6 +17,10 @@ interface ImportMetaEnv {
   readonly VITE_PROJECT_GITHUB_MERIDIAN: string;
   /** GitHub repo URL — UIMailBot */
   readonly VITE_PROJECT_GITHUB_UIMAILBOT: string;
+  /** GitHub repo URL — Work Parser */
+  readonly VITE_PROJECT_GITHUB_WORKPARSER: string;
+  /** GitHub repo URL — Vika AI Bot */
+  readonly VITE_PROJECT_GITHUB_VIKA: string;
   /** "Get in touch" Telegram link */
   readonly VITE_TELEGRAM_URL: string;
   /** GitHub profile link */

@@ -87,7 +87,11 @@ export function WorkCard({ project, expanded, onToggle }: WorkCardProps) {
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="grid h-full w-full grid-cols-2 gap-3 p-6">
+            <div
+              className={`grid h-full w-full gap-3 p-6 ${
+                project.url ? 'grid-cols-2' : 'grid-cols-1'
+              }`}
+            >
               <motion.a
                 href={project.github}
                 target="_blank"
@@ -102,20 +106,22 @@ export function WorkCard({ project, expanded, onToggle }: WorkCardProps) {
                 <Github size={40} />
                 <span className="text-sm font-medium">{t.works.openGithub}</span>
               </motion.a>
-              <motion.a
-                href={project.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${project.name} — open site`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onToggle(project.slug);
-                }}
-                className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-raised)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--accent-cyan)] hover:bg-[var(--border-strong)]"
-              >
-                <ExternalLink size={40} />
-                <span className="text-sm font-medium">{t.works.openLive}</span>
-              </motion.a>
+              {project.url && (
+                <motion.a
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${project.name} — open site`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggle(project.slug);
+                  }}
+                  className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-raised)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--accent-cyan)] hover:bg-[var(--border-strong)]"
+                >
+                  <ExternalLink size={40} />
+                  <span className="text-sm font-medium">{t.works.openLive}</span>
+                </motion.a>
+              )}
             </div>
             <button
               type="button"

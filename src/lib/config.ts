@@ -35,6 +35,12 @@ export const PROJECT_GITHUB_URLS = {
   uimailbot:
     import.meta.env.VITE_PROJECT_GITHUB_UIMAILBOT ||
     'https://github.com/pica105/uimailbot',
+  workParser:
+    import.meta.env.VITE_PROJECT_GITHUB_WORKPARSER ||
+    'https://github.com/pica105/work-parser',
+  vika:
+    import.meta.env.VITE_PROJECT_GITHUB_VIKA ||
+    'https://github.com/pica105/real-ai-bot',
 } as const;
 
 /** "Get in touch" Telegram link used across header / hero / CTA / footer. */
