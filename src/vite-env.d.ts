@@ -19,6 +19,8 @@ interface ImportMetaEnv {
   readonly VITE_PROJECT_GITHUB_UIMAILBOT: string;
   /** "Get in touch" Telegram link */
   readonly VITE_TELEGRAM_URL: string;
+  /** GitHub profile link */
+  readonly VITE_GITHUB_PROFILE_URL: string;
 }
 
 interface ImportMeta {

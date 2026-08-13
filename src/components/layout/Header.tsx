@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun, Github } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
 import { useDictionary } from '@/hooks/useDictionary';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { scrollTo } from '@/lib/utils';
 import { stopScroll, startScroll } from '@/lib/lenis';
-import { TELEGRAM_URL } from '@/lib/constants';
+import { TELEGRAM_URL, GITHUB_PROFILE_URL } from '@/lib/constants';
 import { PillButton } from '@/components/shared/PillButton';
+import { SocialButton } from '@/components/shared/SocialButton';
 import { LanguageToggle } from '@/components/shared/LanguageToggle';
 import { cn } from '@/lib/utils';
 
@@ -72,12 +73,12 @@ export function Header() {
       className="fixed left-0 right-0 top-0 z-40 border-b border-[var(--border)] backdrop-blur-md"
       style={{ backgroundColor: 'color-mix(in srgb, var(--background) 70%, transparent)' }}
     >
-      <div className="mx-auto flex h-16 max-w-[80rem] items-center justify-between px-5 md:h-[4.5rem] md:px-8">
+      <div className="mx-auto grid h-16 max-w-[80rem] grid-cols-[1fr_auto_1fr] items-center px-5 md:h-[4.5rem] md:px-8">
         {/* Wordmark */}
         <button
           type="button"
           onClick={() => scrollTo('home')}
-          className="group flex items-center gap-1.5"
+          className="group col-start-1 flex items-center gap-1.5 justify-self-start"
           aria-label="rjx home"
         >
           <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">rjx</span>
@@ -85,14 +86,14 @@ export function Header() {
         </button>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+        <nav className="col-start-2 hidden items-center gap-8 justify-self-center lg:flex" aria-label="Primary">
           {NAV_SECTIONS.filter((s) => s !== 'home').map((id) =>
             navLink(id, t.nav[id as keyof typeof t.nav])
           )}
         </nav>
 
         {/* Right cluster */}
-        <div className="flex items-center gap-3">
+        <div className="col-start-3 flex items-center justify-self-end gap-3">
           <button
             type="button"
             onClick={toggleTheme}
@@ -112,6 +113,9 @@ export function Header() {
               {t.nav.contact}
             </PillButton>
           </div>
+          <SocialButton href={GITHUB_PROFILE_URL} label="GitHub" className="h-8 w-8">
+            <Github size={16} />
+          </SocialButton>
           {/* Mobile hamburger */}
           <button
             type="button"

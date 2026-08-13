@@ -1,1 +1,1 @@
-export { TELEGRAM_URL } from '@/lib/config';
+export { TELEGRAM_URL, GITHUB_PROFILE_URL } from '@/lib/config';

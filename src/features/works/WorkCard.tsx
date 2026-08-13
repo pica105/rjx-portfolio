@@ -1,28 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ExternalLink, Github, X } from 'lucide-react';
+import { ExternalLink, Github, X } from 'lucide-react';
 import { useDictionary } from '@/hooks/useDictionary';
 import type { Project } from '@/types';
 
 interface WorkCardProps {
   project: Project;
+  expanded: boolean;
+  onToggle: (slug: string) => void;
 }
 
-export function WorkCard({ project }: WorkCardProps) {
+export function WorkCard({ project, expanded, onToggle }: WorkCardProps) {
   const t = useDictionary();
-  const [expanded, setExpanded] = useState(false);
 
   // Escape collapses the action view
   useEffect(() => {
     if (!expanded) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setExpanded(false);
+      if (e.key === 'Escape') onToggle(project.slug);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [expanded]);
-
-  const toggle = () => setExpanded((v) => !v);
+  }, [expanded, onToggle, project.slug]);
 
   return (
     <div
@@ -34,11 +33,11 @@ export function WorkCard({ project }: WorkCardProps) {
           ? `${project.name} — actions`
           : `${project.name} — view actions`
       }
-      onClick={toggle}
+      onClick={() => onToggle(project.slug)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          toggle();
+          onToggle(project.slug);
         }
       }}
       className="group relative min-h-[20rem] cursor-pointer overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] transition-all duration-400 ease-out-expo hover:-translate-y-2 hover:scale-[1.01] hover:border-[var(--border-strong)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)]"
@@ -67,37 +66,14 @@ export function WorkCard({ project }: WorkCardProps) {
             />
             <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--surface)_8%,transparent_90%)]" />
 
-            {/* Top meta row */}
-            <div className="absolute left-6 right-6 top-6 flex items-center justify-between">
-              <span className="text-xs uppercase tracking-wider text-[var(--text-muted)]">
-                {project.category} — {project.year}
-              </span>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-raised)] transition-colors duration-200 group-hover:bg-[var(--accent-cyan)]">
-                <ArrowUpRight
-                  size={16}
-                  className="text-[var(--text-secondary)] transition-colors duration-200 group-hover:text-[#0a0a0b]"
-                />
-              </span>
-            </div>
-
             {/* Bottom content */}
             <div className="relative z-10">
               <h3 className="mb-2 text-xl font-semibold text-[var(--text-primary)] sm:text-2xl">
                 {project.name}
               </h3>
-              <p className="mb-4 line-clamp-2 max-w-md text-sm text-[var(--text-secondary)]">
+              <p className="line-clamp-2 max-w-md text-sm text-[var(--text-secondary)]">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-[var(--border)] px-2.5 py-1 font-mono text-xs text-[var(--text-secondary)]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           </motion.div>
         )}
@@ -117,7 +93,10 @@ export function WorkCard({ project }: WorkCardProps) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`${project.name} — GitHub`}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggle(project.slug);
+                }}
                 className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-raised)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--accent-cyan)] hover:bg-[var(--border-strong)]"
               >
                 <Github size={40} />
@@ -128,7 +107,10 @@ export function WorkCard({ project }: WorkCardProps) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`${project.name} — open site`}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggle(project.slug);
+                }}
                 className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-raised)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--accent-cyan)] hover:bg-[var(--border-strong)]"
               >
                 <ExternalLink size={40} />
@@ -139,7 +121,7 @@ export function WorkCard({ project }: WorkCardProps) {
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                setExpanded(false);
+                onToggle(project.slug);
               }}
               aria-label="Close actions"
               className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)]/80 text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"

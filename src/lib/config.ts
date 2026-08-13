@@ -40,3 +40,7 @@ export const PROJECT_GITHUB_URLS = {
 /** "Get in touch" Telegram link used across header / hero / CTA / footer. */
 export const TELEGRAM_URL =
   import.meta.env.VITE_TELEGRAM_URL || 'https://t.me/pica105';
+
+/** GitHub profile link (header + footer icon buttons). */
+export const GITHUB_PROFILE_URL =
+  import.meta.env.VITE_GITHUB_PROFILE_URL || 'https://github.com/pica105';

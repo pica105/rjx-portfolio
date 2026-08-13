@@ -42,9 +42,16 @@ export function Capabilities() {
         <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {t.capabilities.cards.map((card, index) => {
             const Icon = ICONS[card.icon] ?? Rocket;
+            const isLast = index === t.capabilities.cards.length - 1;
             return (
-              <SectionReveal key={card.title} delay={index * 0.1} direction="up" distance={30}>
-                <article className="ease-out-expo h-full cursor-default rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--border-strong)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.5),0_0_40px_rgba(0,229,199,0.08)]">
+              <SectionReveal
+                key={card.title}
+                delay={index * 0.1}
+                direction="up"
+                distance={30}
+                className={isLast ? 'lg:col-start-2' : undefined}
+              >
+                <article className="ease-out-expo h-full cursor-default rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--border-strong)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.5),0_0_40px_rgba(255,255,255,0.08)]">
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface-raised)]">
                     <Icon size={20} className="text-[var(--accent-cyan)]" />
                   </div>

@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react';
 import { useDictionary } from '@/hooks/useDictionary';
 import { Eyebrow } from '@/components/shared/Eyebrow';
 import { SectionReveal } from '@/components/shared/SectionReveal';
@@ -5,6 +6,11 @@ import { WorkCard } from '@/features/works/WorkCard';
 
 export function Works() {
   const t = useDictionary();
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
+
+  const toggleProject = useCallback((slug: string) => {
+    setOpenSlug((s) => (s === slug ? null : slug));
+  }, []);
 
   return (
     <section id="works" className="px-5 py-24 md:px-8 md:py-32">
@@ -28,7 +34,11 @@ export function Works() {
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
           {t.works.projects.map((project, index) => (
             <SectionReveal key={project.slug} delay={index * 0.12} direction="up" distance={40}>
-              <WorkCard project={project} />
+              <WorkCard
+                project={project}
+                expanded={openSlug === project.slug}
+                onToggle={toggleProject}
+              />
             </SectionReveal>
           ))}
         </div>
