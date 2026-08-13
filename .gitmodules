@@ -1,0 +1,11 @@
+[submodule "projects/amber-terminal"]
+	path = projects/amber-terminal
+	url = https://github.com/pica105/amber-terminal.git
+
+[submodule "projects/meridian-kimi"]
+	path = projects/meridian-kimi
+	url = https://github.com/pica105/meridian-kimi.git
+
+[submodule "projects/aurum-noir"]
+	path = projects/aurum-noir
+	url = https://github.com/pica105/aurum-noir.git
