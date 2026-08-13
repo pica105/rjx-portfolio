@@ -58,7 +58,7 @@ export function Header() {
         className={cn(
           'ease-out-expo absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 transition-transform duration-300',
           activeSection === id && 'scale-x-100',
-          'bg-[linear-gradient(90deg,#00e5c7,#ff2ea6)]'
+          'bg-[linear-gradient(90deg,#ffffff,#8b8b93)]'
         )}
       />
     </button>

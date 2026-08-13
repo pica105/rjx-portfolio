@@ -117,15 +117,15 @@ export function TerminalBoot() {
         <motion.div
           className="h-[2px] w-full"
           style={{
-            background: 'linear-gradient(90deg, #00e5c7, #ff2ea6)',
-            boxShadow: '0 0 20px rgba(0,229,199,0.5)',
+            background: 'linear-gradient(90deg, #ffffff, #8b8b93)',
+            boxShadow: '0 0 20px rgba(255,255,255,0.5)',
           }}
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         />
       ) : (
-        <div className="w-full max-w-[48rem] font-mono text-sm leading-6 text-[#33ff88] md:text-base">
+        <div className="w-full max-w-[48rem] font-mono text-sm leading-6 text-[#e4e4e7] md:text-base">
           {lines.slice(0, lineIndex).map((line, i) => (
             <div key={i} className="whitespace-pre-wrap break-words">
               {line}

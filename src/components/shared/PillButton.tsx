@@ -21,7 +21,7 @@ const sizeStyles: Record<NonNullable<PillButtonProps['size']>, string> = {
 };
 
 const variantStyles: Record<PillButtonProps['variant'], string> = {
-  primary: 'bg-[linear-gradient(135deg,#00e5c7,#ff2ea6)] text-[#0a0a0b] font-semibold',
+  primary: 'bg-[linear-gradient(135deg,#ffffff,#d4d4d8)] text-[#0a0a0b] font-semibold',
   secondary:
     'bg-[var(--surface-raised)] text-[var(--text-primary)] border border-[var(--border-strong)]',
   outline: 'bg-transparent text-[var(--text-primary)] border border-[var(--border-strong)]',
