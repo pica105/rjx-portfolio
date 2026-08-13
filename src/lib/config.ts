@@ -21,6 +21,22 @@ export const PROJECT_URLS = {
     import.meta.env.VITE_PROJECT_URL_UIMAILBOT || 'https://t.me/uimailbot',
 } as const;
 
+/** GitHub repository URLs for the project cards (left "GitHub" button). */
+export const PROJECT_GITHUB_URLS = {
+  amber:
+    import.meta.env.VITE_PROJECT_GITHUB_AMBER ||
+    'https://github.com/pica105/amber-terminal',
+  aurum:
+    import.meta.env.VITE_PROJECT_GITHUB_AURUM ||
+    'https://github.com/pica105/aurum-noir',
+  meridian:
+    import.meta.env.VITE_PROJECT_GITHUB_MERIDIAN ||
+    'https://github.com/pica105/meridian-kimi',
+  uimailbot:
+    import.meta.env.VITE_PROJECT_GITHUB_UIMAILBOT ||
+    'https://github.com/pica105/uimailbot',
+} as const;
+
 /** "Get in touch" Telegram link used across header / hero / CTA / footer. */
 export const TELEGRAM_URL =
   import.meta.env.VITE_TELEGRAM_URL || 'https://t.me/pica105';

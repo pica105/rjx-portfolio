@@ -1,4 +1,4 @@
-import { PROJECT_URLS } from '@/lib/config';
+import { PROJECT_URLS, PROJECT_GITHUB_URLS } from '@/lib/config';
 
 export const en = {
   nav: {
@@ -68,6 +68,8 @@ export const en = {
     eyebrow: 'Portfolio',
     title: 'Selected Work',
     subtitle: 'Projects shipped end-to-end. Each one tells a different story.',
+    openGithub: 'GitHub',
+    openLive: 'Open',
     projects: [
       {
         slug: 'amber-terminal',
@@ -79,6 +81,7 @@ export const en = {
         tags: ['React 19', 'TypeScript', 'Motion'],
         image: '/images/amber-terminal.png',
         url: PROJECT_URLS.amber,
+        github: PROJECT_GITHUB_URLS.amber,
         proofType: 'screenshot' as const,
       },
       {
@@ -91,6 +94,7 @@ export const en = {
         tags: ['React 19', 'Design System', 'Lenis'],
         image: '/images/aurum-noir.png',
         url: PROJECT_URLS.aurum,
+        github: PROJECT_GITHUB_URLS.aurum,
         proofType: 'screenshot' as const,
       },
       {
@@ -103,6 +107,7 @@ export const en = {
         tags: ['React 19', 'shadcn/ui', 'GSAP'],
         image: '/images/meridian-kimi.png',
         url: PROJECT_URLS.meridian,
+        github: PROJECT_GITHUB_URLS.meridian,
         proofType: 'screenshot' as const,
       },
       {
@@ -115,6 +120,7 @@ export const en = {
         tags: ['Telegram API', 'Node.js', 'Deployed'],
         image: '/images/uimailbot.png',
         url: PROJECT_URLS.uimailbot,
+        github: PROJECT_GITHUB_URLS.uimailbot,
         proofType: 'architecture' as const,
       },
     ],

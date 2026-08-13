@@ -1,5 +1,5 @@
 import type { Dictionary } from './en';
-import { PROJECT_URLS } from '@/lib/config';
+import { PROJECT_URLS, PROJECT_GITHUB_URLS } from '@/lib/config';
 
 export const ru: Dictionary = {
   nav: {
@@ -69,6 +69,8 @@ export const ru: Dictionary = {
     eyebrow: 'Портфолио',
     title: 'Избранные работы',
     subtitle: 'Проекты, выпущенные от начала до конца. У каждого своя история.',
+    openGithub: 'GitHub',
+    openLive: 'Открыть',
     projects: [
       {
         slug: 'amber-terminal',
@@ -80,6 +82,7 @@ export const ru: Dictionary = {
         tags: ['React 19', 'TypeScript', 'Motion'],
         image: '/images/amber-terminal.png',
         url: PROJECT_URLS.amber,
+        github: PROJECT_GITHUB_URLS.amber,
         proofType: 'screenshot' as const,
       },
       {
@@ -92,6 +95,7 @@ export const ru: Dictionary = {
         tags: ['React 19', 'Дизайн-система', 'Lenis'],
         image: '/images/aurum-noir.png',
         url: PROJECT_URLS.aurum,
+        github: PROJECT_GITHUB_URLS.aurum,
         proofType: 'screenshot' as const,
       },
       {
@@ -104,6 +108,7 @@ export const ru: Dictionary = {
         tags: ['React 19', 'shadcn/ui', 'GSAP'],
         image: '/images/meridian-kimi.png',
         url: PROJECT_URLS.meridian,
+        github: PROJECT_GITHUB_URLS.meridian,
         proofType: 'screenshot' as const,
       },
       {
@@ -116,6 +121,7 @@ export const ru: Dictionary = {
         tags: ['Telegram API', 'Node.js', 'Задеплоен'],
         image: '/images/uimailbot.png',
         url: PROJECT_URLS.uimailbot,
+        github: PROJECT_GITHUB_URLS.uimailbot,
         proofType: 'architecture' as const,
       },
     ],

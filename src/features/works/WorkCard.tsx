@@ -1,4 +1,7 @@
-import { ArrowUpRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, ExternalLink, Github, X } from 'lucide-react';
+import { useDictionary } from '@/hooks/useDictionary';
 import type { Project } from '@/types';
 
 interface WorkCardProps {
@@ -6,57 +9,146 @@ interface WorkCardProps {
 }
 
 export function WorkCard({ project }: WorkCardProps) {
+  const t = useDictionary();
+  const [expanded, setExpanded] = useState(false);
+
+  // Escape collapses the action view
+  useEffect(() => {
+    if (!expanded) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setExpanded(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [expanded]);
+
+  const toggle = () => setExpanded((v) => !v);
+
   return (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`${project.name} — open project site`}
-      className="group relative flex min-h-[20rem] flex-col justify-end overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-400 ease-out-expo hover:-translate-y-2 hover:scale-[1.01] hover:border-[var(--border-strong)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)]"
+    <div
+      role="button"
+      tabIndex={0}
+      aria-expanded={expanded}
+      aria-label={
+        expanded
+          ? `${project.name} — actions`
+          : `${project.name} — view actions`
+      }
+      onClick={toggle}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      }}
+      className="group relative min-h-[20rem] cursor-pointer overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] transition-all duration-400 ease-out-expo hover:-translate-y-2 hover:scale-[1.01] hover:border-[var(--border-strong)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)]"
     >
-      {/* Background image */}
-      <img
-        src={project.image}
-        alt=""
-        loading="lazy"
-        width={800}
-        height={600}
-        className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity duration-500 group-hover:opacity-95"
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).style.display = 'none';
-        }}
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--surface)_8%,transparent_90%)]" />
+      <AnimatePresence initial={false}>
+        {!expanded && (
+          <motion.div
+            key="preview"
+            className="absolute inset-0 flex flex-col justify-end p-6"
+            initial={{ opacity: 0, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.04 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Background image */}
+            <img
+              src={project.image}
+              alt=""
+              loading="lazy"
+              width={800}
+              height={600}
+              className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity duration-500 group-hover:opacity-95"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).style.display = 'none';
+              }}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--surface)_8%,transparent_90%)]" />
 
-      {/* Top meta row */}
-      <div className="absolute left-6 right-6 top-6 flex items-center justify-between">
-        <span className="text-xs uppercase tracking-wider text-[var(--text-muted)]">
-          {project.category} — {project.year}
-        </span>
-        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-raised)] transition-colors duration-200 group-hover:bg-[var(--accent-cyan)]">
-          <ArrowUpRight size={16} className="text-[var(--text-secondary)] transition-colors duration-200 group-hover:text-[#0a0a0b]" />
-        </span>
-      </div>
+            {/* Top meta row */}
+            <div className="absolute left-6 right-6 top-6 flex items-center justify-between">
+              <span className="text-xs uppercase tracking-wider text-[var(--text-muted)]">
+                {project.category} — {project.year}
+              </span>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-raised)] transition-colors duration-200 group-hover:bg-[var(--accent-cyan)]">
+                <ArrowUpRight
+                  size={16}
+                  className="text-[var(--text-secondary)] transition-colors duration-200 group-hover:text-[#0a0a0b]"
+                />
+              </span>
+            </div>
 
-      {/* Bottom content */}
-      <div className="relative z-10">
-        <h3 className="mb-2 text-xl font-semibold text-[var(--text-primary)] sm:text-2xl">
-          {project.name}
-        </h3>
-        <p className="mb-4 line-clamp-2 max-w-md text-sm text-[var(--text-secondary)]">
-          {project.description}
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-[var(--border)] px-2.5 py-1 font-mono text-xs text-[var(--text-secondary)]"
+            {/* Bottom content */}
+            <div className="relative z-10">
+              <h3 className="mb-2 text-xl font-semibold text-[var(--text-primary)] sm:text-2xl">
+                {project.name}
+              </h3>
+              <p className="mb-4 line-clamp-2 max-w-md text-sm text-[var(--text-secondary)]">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-[var(--border)] px-2.5 py-1 font-mono text-xs text-[var(--text-secondary)]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {expanded && (
+          <motion.div
+            key="actions"
+            className="absolute inset-0 z-10"
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="grid h-full w-full grid-cols-2 gap-3 p-6">
+              <motion.a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${project.name} — GitHub`}
+                onClick={(e) => e.stopPropagation()}
+                className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-raised)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--accent-cyan)] hover:bg-[var(--border-strong)]"
+              >
+                <Github size={40} />
+                <span className="text-sm font-medium">{t.works.openGithub}</span>
+              </motion.a>
+              <motion.a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${project.name} — open site`}
+                onClick={(e) => e.stopPropagation()}
+                className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-raised)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--accent-cyan)] hover:bg-[var(--border-strong)]"
+              >
+                <ExternalLink size={40} />
+                <span className="text-sm font-medium">{t.works.openLive}</span>
+              </motion.a>
+            </div>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setExpanded(false);
+              }}
+              aria-label="Close actions"
+              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--background)]/80 text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
             >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </a>
+              <X size={16} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
