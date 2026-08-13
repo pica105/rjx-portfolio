@@ -77,7 +77,7 @@ export const en = {
         description:
           'A developer landing page with a warm evening aesthetic — amber CRT glow, coffee stains, and a command-palette powered by Framer Motion.',
         tags: ['React 19', 'TypeScript', 'Motion'],
-        image: '/images/project-amber-terminal.svg',
+        image: '/images/amber-terminal.png',
         url: PROJECT_URLS.amber,
         proofType: 'screenshot' as const,
       },
@@ -89,7 +89,7 @@ export const en = {
         description:
           'A black-and-gold luxury landing for an independent watch house — limited editions of 200, scroll-choreographed storytelling.',
         tags: ['React 19', 'Design System', 'Lenis'],
-        image: '/images/project-aurum-noir.svg',
+        image: '/images/aurum-noir.png',
         url: PROJECT_URLS.aurum,
         proofType: 'screenshot' as const,
       },
@@ -101,7 +101,7 @@ export const en = {
         description:
           'A financial OS for freelancers — invoices, taxes, expenses and cash-flow forecasts in one living spreadsheet.',
         tags: ['React 19', 'shadcn/ui', 'GSAP'],
-        image: '/images/project-meridian.svg',
+        image: '/images/meridian-kimi.png',
         url: PROJECT_URLS.meridian,
         proofType: 'screenshot' as const,
       },
@@ -113,7 +113,7 @@ export const en = {
         description:
           'A hosted Telegram bot handling mail-style workflows in chat — deployed, live, and running in production.',
         tags: ['Telegram API', 'Node.js', 'Deployed'],
-        image: '/images/project-uimailbot.svg',
+        image: '/images/uimailbot.png',
         url: PROJECT_URLS.uimailbot,
         proofType: 'architecture' as const,
       },

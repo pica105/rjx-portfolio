@@ -78,7 +78,7 @@ export const ru: Dictionary = {
         description:
           'Лендинг разработчика в тёплой вечерней эстетике — янтарное свечение CRT, пятна от кофе и командная палитра на Framer Motion.',
         tags: ['React 19', 'TypeScript', 'Motion'],
-        image: '/images/project-amber-terminal.svg',
+        image: '/images/amber-terminal.png',
         url: PROJECT_URLS.amber,
         proofType: 'screenshot' as const,
       },
@@ -90,7 +90,7 @@ export const ru: Dictionary = {
         description:
           'Люксовый чёрно-золотой лендинг независимой часовой мануфактуры — лимитированные серии по 200 экземпляров.',
         tags: ['React 19', 'Дизайн-система', 'Lenis'],
-        image: '/images/project-aurum-noir.svg',
+        image: '/images/aurum-noir.png',
         url: PROJECT_URLS.aurum,
         proofType: 'screenshot' as const,
       },
@@ -102,7 +102,7 @@ export const ru: Dictionary = {
         description:
           'Финансовая ОС для фрилансеров — инвойсы, налоги, расходы и прогноз cash flow в одной живой таблице.',
         tags: ['React 19', 'shadcn/ui', 'GSAP'],
-        image: '/images/project-meridian.svg',
+        image: '/images/meridian-kimi.png',
         url: PROJECT_URLS.meridian,
         proofType: 'screenshot' as const,
       },
@@ -114,7 +114,7 @@ export const ru: Dictionary = {
         description:
           'Развёрнутый Telegram-бот для почтовых сценариев прямо в чате — запущен и работает в продакшене.',
         tags: ['Telegram API', 'Node.js', 'Задеплоен'],
-        image: '/images/project-uimailbot.svg',
+        image: '/images/uimailbot.png',
         url: PROJECT_URLS.uimailbot,
         proofType: 'architecture' as const,
       },
