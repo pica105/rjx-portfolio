@@ -123,6 +123,22 @@ export const en = {
         image: '/images/vika-ai-bot.png',
         github: PROJECT_GITHUB_URLS.vika,
       },
+      {
+        slug: 'auto-tg',
+        name: 'Auto TG',
+        description:
+          'A FunPay Cardinal plugin that automates operations on a digital goods marketplace — cuts manual work, speeds up deal processing, and automates routine buy/sell tasks. Refactored the code, improved deal logic, optimized database interactions, and increased stability.',
+        image: '/images/auto-tg.png',
+        github: PROJECT_GITHUB_URLS.autoTg,
+      },
+      {
+        slug: 'ai-reshalka',
+        name: 'AI Решалка',
+        description:
+          'A Russian-language Chrome MV3 extension that solves math problems from a selected screen region. Two modes — step-by-step solution and short answer, 20 free requests, $4.99/month premium, and secure authentication.',
+        image: '/images/ai-reshalka.png',
+        github: PROJECT_GITHUB_URLS.aiReshalka,
+      },
     ],
   },
   cta: {

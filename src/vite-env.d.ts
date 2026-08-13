@@ -21,6 +21,10 @@ interface ImportMetaEnv {
   readonly VITE_PROJECT_GITHUB_WORKPARSER: string;
   /** GitHub repo URL — Vika AI Bot */
   readonly VITE_PROJECT_GITHUB_VIKA: string;
+  /** GitHub repo URL — Auto TG */
+  readonly VITE_PROJECT_GITHUB_AUTOTG: string;
+  /** GitHub repo URL — AI Решалка */
+  readonly VITE_PROJECT_GITHUB_AIRESHALKA: string;
   /** "Get in touch" Telegram link */
   readonly VITE_TELEGRAM_URL: string;
   /** GitHub profile link */

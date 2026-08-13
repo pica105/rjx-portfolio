@@ -41,6 +41,12 @@ export const PROJECT_GITHUB_URLS = {
   vika:
     import.meta.env.VITE_PROJECT_GITHUB_VIKA ||
     'https://github.com/pica105/real-ai-bot',
+  autoTg:
+    import.meta.env.VITE_PROJECT_GITHUB_AUTOTG ||
+    'https://github.com/pica105/auto-tg',
+  aiReshalka:
+    import.meta.env.VITE_PROJECT_GITHUB_AIRESHALKA ||
+    'https://github.com/pica105/ai-reshalka',
 } as const;
 
 /** "Get in touch" Telegram link used across header / hero / CTA / footer. */

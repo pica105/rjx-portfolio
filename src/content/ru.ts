@@ -124,6 +124,22 @@ export const ru: Dictionary = {
         image: '/images/vika-ai-bot.png',
         github: PROJECT_GITHUB_URLS.vika,
       },
+      {
+        slug: 'auto-tg',
+        name: 'Auto TG',
+        description:
+          'Плагин для FunPay Cardinal, автоматизирующий операции на маркетплейсе цифровых товаров — сокращает ручные действия, ускоряет обработку сделок и автоматизирует типовые операции покупки и продажи. Провёл рефакторинг кода, улучшил логику сделок, оптимизировал работу с базой данных и повысил стабильность.',
+        image: '/images/auto-tg.png',
+        github: PROJECT_GITHUB_URLS.autoTg,
+      },
+      {
+        slug: 'ai-reshalka',
+        name: 'AI Решалка',
+        description:
+          'Русскоязычное Chrome MV3-расширение для решения математических задач по выделенному фрагменту экрана. Два режима — подробное пошаговое решение и короткий ответ, 20 бесплатных запросов, premium $4.99/мес и безопасная авторизация.',
+        image: '/images/ai-reshalka.png',
+        github: PROJECT_GITHUB_URLS.aiReshalka,
+      },
     ],
   },
   cta: {
