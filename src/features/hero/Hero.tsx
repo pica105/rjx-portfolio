@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
@@ -12,6 +13,23 @@ const EASE = [0.215, 0.61, 0.355, 1] as const;
 export function Hero() {
   const t = useDictionary();
   const hasBooted = useAppStore((s) => s.hasBooted);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Hide the "SCROLL" indicator as soon as the user starts scrolling.
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 8) setScrolled(true);
+    };
+    const onIntent = () => setScrolled(true);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('wheel', onIntent, { passive: true });
+    window.addEventListener('touchmove', onIntent, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('wheel', onIntent);
+      window.removeEventListener('touchmove', onIntent);
+    };
+  }, []);
 
   const words = t.hero.headline.split(' ');
 
@@ -84,7 +102,11 @@ export function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
+      <motion.div
+        className="pointer-events-none absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+        animate={{ opacity: scrolled ? 0 : 1 }}
+        transition={{ duration: 0.3 }}
+      >
         <motion.span
           initial={{ opacity: 0 }}
           animate={hasBooted ? { opacity: 1 } : { opacity: 0 }}
@@ -99,7 +121,7 @@ export function Hero() {
         >
           <ChevronDown size={20} className="text-[var(--text-muted)]" />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
