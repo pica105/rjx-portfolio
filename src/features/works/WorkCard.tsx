@@ -21,12 +21,12 @@ export function WorkCard({ project }: WorkCardProps) {
         loading="lazy"
         width={800}
         height={600}
-        className="absolute inset-0 h-full w-full object-cover opacity-40 transition-opacity duration-500 group-hover:opacity-60"
+        className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity duration-500 group-hover:opacity-95"
         onError={(e) => {
           (e.currentTarget as HTMLImageElement).style.display = 'none';
         }}
       />
-      <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--surface)_20%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--surface)_8%,transparent_90%)]" />
 
       {/* Top meta row */}
       <div className="absolute left-6 right-6 top-6 flex items-center justify-between">
