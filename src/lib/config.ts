@@ -47,6 +47,12 @@ export const PROJECT_GITHUB_URLS = {
   aiReshalka:
     import.meta.env.VITE_PROJECT_GITHUB_AIRESHALKA ||
     'https://github.com/pica105/ai-reshalka',
+  doubleCheck:
+    import.meta.env.VITE_PROJECT_GITHUB_DOUBLECHECK ||
+    'https://github.com/pica105/b2b-api-service-doublecheck',
+  getUsTg:
+    import.meta.env.VITE_PROJECT_GITHUB_GETUSTG ||
+    'https://github.com/pica105/b2b-api-service-get_id_from_us_tg',
 } as const;
 
 /** "Get in touch" Telegram link used across header / hero / CTA / footer. */

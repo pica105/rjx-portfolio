@@ -139,6 +139,22 @@ export const en = {
         image: '/images/ai-reshalka.png',
         github: PROJECT_GITHUB_URLS.aiReshalka,
       },
+      {
+        slug: 'b2b-api-service-doublecheck',
+        name: 'B2B API Service',
+        description:
+          'Async FastAPI bridge between Bitrix24 CRM and System 313. Replaced a 20-request legacy duplicate check with crm.duplicate.findbycomm, running LEAD and CONTACT lookups in parallel via asyncio.gather.',
+        image: '/images/b2b-api-service-doublecheck.png',
+        github: PROJECT_GITHUB_URLS.doubleCheck,
+      },
+      {
+        slug: 'b2b-api-service-get_id_from_us_tg',
+        name: 'Telegram ID Resolver',
+        description:
+          'FastAPI service that resolves a Bitrix24 contact Telegram username to a numeric user_id via Telethon MTProto, then writes it back to the CRM with post-write verification.',
+        image: '/images/b2b-api-service-get_id_from_us_tg.png',
+        github: PROJECT_GITHUB_URLS.getUsTg,
+      },
     ],
   },
   cta: {

@@ -140,6 +140,22 @@ export const ru: Dictionary = {
         image: '/images/ai-reshalka.png',
         github: PROJECT_GITHUB_URLS.aiReshalka,
       },
+      {
+        slug: 'b2b-api-service-doublecheck',
+        name: 'B2B API Service',
+        description:
+          'Асинхронный FastAPI-мост между Bitrix24 CRM и System 313. Legacy-проверка дублей из 20 запросов заменена на crm.duplicate.findbycomm, запросы LEAD и CONTACT выполняются параллельно через asyncio.gather.',
+        image: '/images/b2b-api-service-doublecheck.png',
+        github: PROJECT_GITHUB_URLS.doubleCheck,
+      },
+      {
+        slug: 'b2b-api-service-get_id_from_us_tg',
+        name: 'Telegram ID Resolver',
+        description:
+          'FastAPI-сервис, который находит числовой user_id по Telegram username из контакта Bitrix24 через Telethon MTProto и записывает его обратно в CRM с проверкой после записи.',
+        image: '/images/b2b-api-service-get_id_from_us_tg.png',
+        github: PROJECT_GITHUB_URLS.getUsTg,
+      },
     ],
   },
   cta: {
